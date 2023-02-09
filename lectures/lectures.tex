@@ -1,0 +1,163 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+\newtheorem{theorem}{Теорема}
+\newtheorem{definition}{Определение}
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{lemma}[theorem]{Лемма}
+\title{Лекции по алгебре}
+\author{Титилин Александр}
+\date{}
+\begin{document}
+    \maketitle
+    \section{Линейное пространство, свойства, примеры}
+    Есть множество L = $\{a,b,\dots\}$ и есть некоторое поле  $P$
+    \begin{definition}
+        L называется линейным пространством над полем P, если выполняются следущие условия
+        \begin{enumerate}
+            \item $\forall a,b \in L ~ \exists ! c : a + b = c$
+            \item $\forall a,b,c \in L : (a + b) + c = a + (b + c)$
+             \item $\exists  \overline{0} \in L \forall  a \in L a + 0 = a$
+             \item $\forall  a\in L \exists  \overline{a} \in L : a +  \overline{a} = \overline{0}$
+             \item $a + b = b + a \forall  a,b \in L$
+        \end{enumerate}
+        И существует операция $\forall  a\in L \forall  \alpha \in P \exists ! d \in L : \alpha a = d$
+        \begin{enumerate}
+            \item $\alpha , \beta \in  P a \in L = (\alpha + \beta)a = \alpha a + \beta a$
+            \item  $\forall  a,b \in L , \forall \alpha \in P \alpha(a + b) = \alpha a + \alpha b $
+            \item $\exists  1 \in P 1a = a \forall a \in L$
+            \item $\alpha(\beta a) = (\alpha \beta)a \forall a \in L \forall \alpha ,\beta \in P $
+        \end{enumerate}
+    \end{definition}
+    \subsection{Свойства операций}
+    \begin{enumerate}
+        \item $\exists ! \overline{0}$
+            Пусть есть два ноля тогда их сумма может быть и первым и вторым значит они равны.
+        \item $\forall  a\in L \exists ! \overline{a}$
+             Предполагаем что для какого-то а обратный не единственный, найдется два обратных $\overline{a_1} + a + \overline{a_2}$
+             \[
+             \overline{a_1} + (a + \overline{a_2}) = a_1 + \overline{0} = a_1
+             .\] 
+             \[
+                 (\overline{a_1} + a) + \overline{a_2} = (a + \overline{a_1}) + \overline{a_{2}} = \overline{0} + \overline{a_2} = \overline{a_2} + \overline{0} = \overline{a_2}
+             .\] 
+            \item $a , b \in L \exists  c \in L : a  = b + c$ c называется разностью $a,b$
+                Докажем что разность существует для любых двух элементов и она единсвенная.
+                $(a + \overline{b}) + b = a + (\overline{b} + b) = a + (b + \overline{b}) = a + \overline{0} = a$
+            \item $0a = \overline{0} \forall \in L$
+                \[
+                a + 0a = 1a + 0a = (1 + 0)a = 1a = a
+                .\] 
+            \item $(-1)a = \overline{a} \forall  a\in L$
+                \[
+                a + (-1)a = 1a + (-1)a = (1 + (-1))a = 0a = 0
+                .\] 
+    \end{enumerate}
+    \subsection{Примеры}
+    \begin{enumerate}
+        \item Векторы на плоскости и в пространстве.
+        \item Векторы с $n$ координат.
+        \item Матрицы из вещ чисел  $n \times m$
+        \item  $\{\overline{0}\}$ = L, $P = \mathbb{R}$
+        \item $L =R_{+} ~ P = \mathbb{R} ~ a + b = ab ~ \alpha a = a^{\alpha}$
+        \item L - множество всех полиномов степени не старше n $(P_{n}(t))$.
+        \item L - множество всех функций непрерывных на отрезке от 0 до 1.
+    \end{enumerate}
+    Мы будем терминологически разделять компклесные и вещественные линейные пространства.
+    \begin{definition}
+        Есть поле P, повесим над ним два линейных пространства $L, L'$. Эти два линейных пространства
+        изоморфны друг другу, если между элементами существует биекция,такая что
+         \begin{enumerate}
+            \item $(a + b)' = a' + b' \forall  a, b \in L$ Образ суммы равен сумме образов.
+            \item $(\alpha a)' = \alpha a', \alpha \in P$
+        \end{enumerate}
+    \end{definition}
+    \section{Линейная зависимость, базис, размерность}
+    Рассмотрим $a_1,a_2,\dots,a_{n} \in L$
+    \begin{definition}[Линейная комбинация]
+         \[
+         \alpha_1 a_1 + \alpha_2a_2 + \dots + \alpha_{n}a_{n} = \sum_{i=1}^{n} \alpha_{i} a_{i}
+         .\] 
+     \end{definition}
+     Если линейная комбинация равна нулю, то она называется нулевой или тривиальной.
+     \begin{definition}[Линейная независимость]
+         Система элементов являются линейно независимыми, если их нулевая линейная комбинация достигается при всех нулевых коэффициентов.
+     \end{definition}
+     \begin{definition}[Линейная зависимость]
+         Если нулевую комбинацию можно получить, имея не нулевые коэффициенты, то она
+         линейно зависимая
+     \end{definition}
+     \subsection{Примеры}
+     \begin{enumerate}
+         \item Векторы на плоскость $\vec{v_1} = \{0,1\} \vec{v_2} =\{1,0\}$
+             \[
+             \alpha(1,0) + \beta(0,1) = (\alpha,\beta) = 0 \implies \alpha = 0 \land \beta = 0
+             .\] 
+     \end{enumerate}
+     \subsection{Свойства}
+     \begin{enumerate}
+         \item Если в системе элементов есть нейтральный элемент, то она линейно независимая.
+        \item Если в системе есть два одинаковых, то она линейно зависимая.
+        \item Подномножество совокупность линейно зависимое $\implies$ вся совокупность линейно зависимая.
+        \item Все подмножества линейно независимой системы линейно независимые.
+     \end{enumerate}
+     \begin{theorem}
+         Система элементов линейно зависимой $\iff$ хотя бы один из элементов представлял собой линейную комбинацию остальных элементов.
+     \end{theorem}
+     \begin{proof}
+        Необходимость. $\alpha_{i} \neq 0$ $\alpha_{i}a_{i} = -\alpha_1 a_{1} - \dots - \alpha_{n} a_{n}$ 
+        Достаточность $a_{i} = \beta_1 a_{1} + \dots + \beta_{n} a_{n}$
+     \end{proof}
+     \begin{theorem}
+         \[
+         a_1,\dots,a_{k} \in L, b_1,\dots,b_{m} \in L
+         .\] 
+         Любой элемент второй системы можно представить как линейную комбинацию первой.
+         $m > k \implies $ элементы b линейно зависимы
+     \end{theorem}
+     \begin{proof}
+         \begin{enumerate}
+             \item $k = 1$
+                  \[
+                 b_1 = \alpha_{1} a_{1}
+                 .\] 
+                 \[
+                 b_2 = \alpha_{2}a_1
+                 .\] 
+                 \[
+                 \dots
+                 .\] 
+                 \[
+                 b_{m} = \alpha_{m} a_1
+                 .\] 
+                 \[
+                 -\alpha_2 b_1 + \alpha_1 b_2 + 0b_3 + \dots + 0 b_{m} = 0
+                 .\] 
+            \item 
+                Утверждение теоремы верно для $k - 1$
+                 \[
+                b_1 = \alpha_{11} a_1 + \alpha_{12} a_{2} + \dots + \alpha_{1k}a_{k}
+                .\] 
+                \[
+                b_{i} = a_{i1}a_1 + \dots a_{ik}a_{k} , i = 1 \dots m
+                .\] 
+                Если есть нулевой столбец альф, то а при этих альфах можем выкинуть и элементы b представляются k-1 элементом попали в индуктивное предположение. Нулевых столбцов нет. Мы можем предположить, что $\alpha_{11} \neq 0$
+                \[
+                    b_{2}' =  b_2 - \frac{\alpha_{21}}{\alpha_{11}}b_1
+                .\] 
+                \[
+                b_3' = b_3  - \frac{\alpha_{31}}{\alpha_{11}}b_1
+                .\] 
+                Элементы b' зависимы по индуктивному предположению
+                \[
+                \gamma_2 b_2' + \gamma_3 b_3` + \dots \gamma_{m}b_{n}' = \overline{0}
+                .\] 
+         \end{enumerate}
+     \end{proof}
+\end{document}
+
