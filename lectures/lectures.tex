@@ -459,4 +459,171 @@ L_{j}\subset L_{j - 1}\subset \dots L_2 \subset L_1 \subset L
 \end{enumerate}
 \section{Алгоритм}
 Берутся векторы, которые не вошли в базис суммы, раскладываеются по базису суммы.Теперь берем базисный вектор пересечения (часть разложения, где только векторы из $L_1$)
+\section{Прямая сумма}
+\[
+\exists  ! x_1 \in L_1 , x_2 \in L_2 : x = x_1 + x_2
+.\] 
+Множесвто таких иксов называется прямая сумма. $L_1 \oplus L_2$
+\begin{theorem}[]
+    \[
+    L = L_1 \oplus L_2 \iff
+    .\] 
+    \begin{enumerate}
+        \item $L_1 \cap L_2 = \{ \emptyset \}$ 
+        \item $\dim{L} = \dim{L_1} + \dim{L_2}$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Предположим, что в пересечение есть не только нейтральный элемент.
+    \[
+    \exists x \neq 0 , x \in L_1 \cap L_2
+    .\] 
+    \[
+    x = x + 0 = 0 + x
+    .\] 
+    Два разложения по $L_1,L_2$
+    В другую сторону. Есть базис в $L_1$, есть базис в  $L_2$ 
+    \[
+    L_1 : u_1,\dots,u_{k}
+    .\] 
+    \[
+    L_2 : v_1,\dots,v_{m}
+    .\] 
+    Базис $L$ можно соствить из объединения этих базисов.
+     \[
+    \sum \alpha u + \sum \beta v = 0
+    .\] 
+    \[
+    \sum \alpha u = - \sum \beta v
+    .\] 
+    Элемент из $L_1$ равен элементу из $L_2$, тоесть они из $L_1 \cap L_2 = \emptyset$
+    произвольный элемент разложили по базису из L. Получили определение прямой суммы
+\end{proof}
+\begin{theorem}
+    Для того чтобы $L = L_1 \oplus L_2 \iff $ объединение базиса $L_1$ $L_2$ будет базисом L.
+\end{theorem}
+\begin{definition}
+    \[
+    L_1 \subset L
+    .\] 
+    \[
+        L^{\nu}_{1} - \text{Дополнение до L}
+    .\] 
+    \[
+    L_1 \oplus L_1^{\nu} = L
+    .\] 
+\end{definition}
+\section{Евклидовы и унитарные пространства}
+У нас есть линейное пространство $E$ над полем $P$. 
+\begin{definition}[Евклидовое пространство]
+    $E$ -- евклидово пространство.
+     \[
+    \forall  x,y \in E ~ \exists  (x,y) \in \mathbb{R}
+    .\] 
+    Ставится в соответсвие вещественное число, которое назовем скалярным произведением. Это отображение удовлетворяет следущим пунктам
+    \begin{enumerate}
+        \item $(x,y) = (y,x) ~ \forall  x, y \in E$
+        \item $(x + y,z) = (x,z) + (y,z) ~\forall  x,y,z$
+        \item $(\lambda x,y) = \lambda(x,y) ~ \forall  x,y \in E, \forall  \lambda \in P$
+        \item $(x,x) \ge 0 \forall  x \in E (x,x) = 0 \iff x = 0$
+    \end{enumerate}
+\end{definition}
+\subsection{Свойства.}
+\begin{enumerate}
+    \item $(x,y+z) = (x,y) + (x,z)$
+        \[
+            (y + z,x ) = (y,x) + (z,x) = (x,y) + (x,z)
+        .\] 
+    \item $(x,\lambda y) = \lambda (x,y)$
+    \item $(0,x) = 0 $
+    \item $( \sum \alpha_{i} u_{i},\sum \beta_{j} v_{j} ) = \sum_{i}\sum_{j}\alpha_{i}b_{j}(u_{i},v_{j})$ 
+    \item 
+        \begin{theorem}[Неравенство Коши-Буняковского]
+            $\forall x,y \in E ~ (x,y)^{2} \le (x,x)(y,y)$
+        \end{theorem}
+        \begin{proof}
+            Если x или y равны 0, то се понятно. Рассмотрим
+            \[
+            \lambda x - y
+            .\] 
+            \[
+                (\lambda x - y,\lambda x - y) = (\lambda x,\lambda x) - (y,\lambda x)
+                - (\lambda x, y) + (y,y) = 
+                \lambda^2 (x,x) - 2\lambda (x,y) + (y,y) \ge  0
+            .\] 
+            \[
+            D = (x,y)^2 - (x,x)(y,y) \le  0
+            .\] 
+        \end{proof}
+\end{enumerate}
+\subsection{Унитарные пространства.}
+\begin{definition}[Унитарные пространства]
+    Линейное комплексное пространство называется унитарным, если любым двум элементам ставится в соответсвие комплексное число, которое называется скалярным произведением.
+    $U$
+\end{definition}
+\subsubsection{Свойства}
+\begin{enumerate}
+    \item $(x,y) = \overline{(y,x)}$
+    \item $(x+y,z) = (x,z) + (y,z) \forall  x,y,z \in U$
+    \item $(\lambda x,y) = \lambda (x,y) , \forall  x,y \in U,\lambda \in P $
+    \item $(x,x) \ge  0 ~\forall  x \in U, (x,x) = 0 \iff x = 0$
+\end{enumerate}
+\subsubsection{Примеры}
+\[
+x = (\alpha_1,\dots,\alpha_{n})
+.\] 
+\[
+y = (\beta_1,\dots,\beta_{n})
+.\] 
+\[
+    (x,y) = \sum \alpha_{i} \overline{\beta_{i}}
+.\] 
+\[
+    (x,y + z) = \overline{(y + z,x)} = \overline{(y,x),(z,x)} = \overline{(y,z)} + \overline{z,x}=  (x,y) + (x,z)
+.\] 
+\[
+    (x,\lambda x) = \overline{(\lambda y,x)} = \overline{\lambda} (x,y)
+.\] 
+\[
+    (\sum \alpha_{i} u_{i},\sum \beta_{j} v_{j}) = \sum_{i}\sum_{j}
+.\] 
+\begin{theorem}
+\[
+|(x,y)|^2 \le  (x,x)(y,y)
+.\] 
+\end{theorem}
+\begin{proof}
+    \[
+        (\lambda x - y , \lambda x - y) =
+        |\lambda|^2(x,x) - \overline{\lambda} \overline{(x,y)} - \lambda(x,y) + (y,y) \ge  0
+    .\] 
+    Рассмотрим частный случай
+    \[
+        \lambda = |\lambda| (\cos{\phi} - i \sin{\phi})
+    .\] 
+\end{proof}
+\begin{theorem}[Теорема Грама]
+    \[
+    u_1,\dots,u_{k} \in E
+    .\] 
+    \[
+    \Gamma = 
+    \begin{vmatrix}
+        (u_1,u_1) & (u_1,u_2) & \dots & (u_1,u_{k})\\
+        \dots & \dots & \dots & \dots\\
+        (u_{k},u_1) & (u_{k},u_2) & \dots & (u_{k},u_{k})
+    \end{vmatrix} 
+    .\] 
+    Вектора линейно зависимы
+\end{theorem}
+\begin{proof}
+    Дано, что вектора зависимы
+    \[
+    \alpha_{1}u_1 + \dots + \alpha_{k} u_{k} = 0
+    .\] 
+    \[
+    \alpha (u_1,u_1) + \dots \alpha_{k} (u_1,u_{k}) = 0
+    .\] 
+    Дальше так же умножили скалярно на остальные u. Получили однородную систему с ненулевым решением. Ее определитель ноль.
+\end{proof}
 \end{document}
