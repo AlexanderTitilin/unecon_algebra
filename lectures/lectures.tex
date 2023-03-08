@@ -14,616 +14,725 @@
 \author{Титилин Александр}
 \date{}
 \begin{document}
-    \maketitle
-    \section{Линейное пространство, свойства, примеры}
-    Есть множество L = $\{a,b,\dots\}$ и есть некоторое поле  $P$
-    \begin{definition}
-        L называется линейным пространством над полем P, если выполняются следущие условия
-        \begin{enumerate}
-            \item $\forall a,b \in L ~ \exists ! c : a + b = c$
-            \item $\forall a,b,c \in L : (a + b) + c = a + (b + c)$
-             \item $\exists  \overline{0} \in L \forall  a \in L a + 0 = a$
-             \item $\forall  a\in L \exists  \overline{a} \in L : a +  \overline{a} = \overline{0}$
-             \item $a + b = b + a \forall  a,b \in L$
-        \end{enumerate}
-        И существует операция $\forall  a\in L \forall  \alpha \in P \exists ! d \in L : \alpha a = d$
-        \begin{enumerate}
-            \item $\alpha , \beta \in  P a \in L = (\alpha + \beta)a = \alpha a + \beta a$
-            \item  $\forall  a,b \in L , \forall \alpha \in P \alpha(a + b) = \alpha a + \alpha b $
-            \item $\exists  1 \in P 1a = a \forall a \in L$
-            \item $\alpha(\beta a) = (\alpha \beta)a \forall a \in L \forall \alpha ,\beta \in P $
-        \end{enumerate}
-    \end{definition}
-    \subsection{Свойства операций}
-    \begin{enumerate}
-        \item $\exists ! \overline{0}$
-            Пусть есть два ноля тогда их сумма может быть и первым и вторым значит они равны.
-        \item $\forall  a\in L \exists ! \overline{a}$
-             Предполагаем что для какого-то а обратный не единственный, найдется два обратных $\overline{a_1} + a + \overline{a_2}$
-             \[
-             \overline{a_1} + (a + \overline{a_2}) = a_1 + \overline{0} = a_1
-             .\] 
-             \[
-                 (\overline{a_1} + a) + \overline{a_2} = (a + \overline{a_1}) + \overline{a_{2}} = \overline{0} + \overline{a_2} = \overline{a_2} + \overline{0} = \overline{a_2}
-             .\] 
-            \item $a , b \in L \exists  c \in L : a  = b + c$ c называется разностью $a,b$
-                Докажем что разность существует для любых двух элементов и она единсвенная.
-                $(a + \overline{b}) + b = a + (\overline{b} + b) = a + (b + \overline{b}) = a + \overline{0} = a$
-            \item $0a = \overline{0} \forall \in L$
-                \[
-                a + 0a = 1a + 0a = (1 + 0)a = 1a = a
-                .\] 
-            \item $(-1)a = \overline{a} \forall  a\in L$
-                \[
-                a + (-1)a = 1a + (-1)a = (1 + (-1))a = 0a = 0
-                .\] 
-    \end{enumerate}
-    \subsection{Примеры}
-    \begin{enumerate}
-        \item Векторы на плоскости и в пространстве.
-        \item Векторы с $n$ координат.
-        \item Матрицы из вещ чисел  $n \times m$
-        \item  $\{\overline{0}\}$ = L, $P = \mathbb{R}$
-        \item $L =R_{+} ~ P = \mathbb{R} ~ a + b = ab ~ \alpha a = a^{\alpha}$
-        \item L - множество всех полиномов степени не старше n $(P_{n}(t))$.
-        \item L - множество всех функций непрерывных на отрезке от 0 до 1.
-    \end{enumerate}
-    Мы будем терминологически разделять компклесные и вещественные линейные пространства.
-    \begin{definition}
-        Есть поле P, повесим над ним два линейных пространства $L, L'$. Эти два линейных пространства
-        изоморфны друг другу, если между элементами существует биекция,такая что
-         \begin{enumerate}
-            \item $(a + b)' = a' + b' \forall  a, b \in L$ Образ суммы равен сумме образов.
-            \item $(\alpha a)' = \alpha a', \alpha \in P$
-        \end{enumerate}
-    \end{definition}
-    \section{Линейная зависимость, базис, размерность}
-    Рассмотрим $a_1,a_2,\dots,a_{n} \in L$
-    \begin{definition}[Линейная комбинация]
-         \[
-         \alpha_1 a_1 + \alpha_2a_2 + \dots + \alpha_{n}a_{n} = \sum_{i=1}^{n} \alpha_{i} a_{i}
-         .\] 
-     \end{definition}
-     Если линейная комбинация равна нулю, то она называется нулевой или тривиальной.
-     \begin{definition}[Линейная независимость]
-         Система элементов являются линейно независимыми, если их нулевая линейная комбинация достигается при всех нулевых коэффициентов.
-     \end{definition}
-     \begin{definition}[Линейная зависимость]
-         Если нулевую комбинацию можно получить, имея не нулевые коэффициенты, то она
-         линейно зависимая
-     \end{definition}
-     \subsection{Примеры}
-     \begin{enumerate}
-         \item Векторы на плоскость $\vec{v_1} = \{0,1\} \vec{v_2} =\{1,0\}$
-             \[
-             \alpha(1,0) + \beta(0,1) = (\alpha,\beta) = 0 \implies \alpha = 0 \land \beta = 0
-             .\] 
-     \end{enumerate}
-     \subsection{Свойства}
-     \begin{enumerate}
-         \item Если в системе элементов есть нейтральный элемент, то она линейно зависимая.
-        \item Если в системе есть два одинаковых, то она линейно зависимая.
-        \item Подномножество совокупность линейно зависимое $\implies$ вся совокупность линейно зависимая.
-        \item Все подмножества линейно независимой системы линейно независимые.
-     \end{enumerate}
-     \begin{theorem}
-         Система элементов линейно зависимой $\iff$ хотя бы один из элементов представлял собой линейную комбинацию остальных элементов.
-     \end{theorem}
-     \begin{proof}
-        Необходимость. $\alpha_{i} \neq 0$ $\alpha_{i}a_{i} = -\alpha_1 a_{1} - \dots - \alpha_{n} a_{n}$ 
-        Достаточность $a_{i} = \beta_1 a_{1} + \dots + \beta_{n} a_{n}$
-     \end{proof}
-     \begin{theorem}
-         \[
-         a_1,\dots,a_{k} \in L, b_1,\dots,b_{m} \in L
-         .\] 
-         Любой элемент второй системы можно представить как линейную комбинацию первой.
-         $m > k \implies $ элементы b линейно зависимы
-     \end{theorem}
-     \begin{proof}
-         \begin{enumerate}
-             \item $k = 1$
-                  \[
-                 b_1 = \alpha_{1} a_{1}
-                 .\] 
-                 \[
-                 b_2 = \alpha_{2}a_1
-                 .\] 
-                 \[
-                 \dots
-                 .\] 
-                 \[
-                 b_{m} = \alpha_{m} a_1
-                 .\] 
-                 \[
-                 -\alpha_2 b_1 + \alpha_1 b_2 + 0b_3 + \dots + 0 b_{m} = 0
-                 .\] 
-            \item 
-                Утверждение теоремы верно для $k - 1$
-                 \[
-                b_1 = \alpha_{11} a_1 + \alpha_{12} a_{2} + \dots + \alpha_{1k}a_{k}
-                .\] 
-                \[
-                b_{i} = a_{i1}a_1 + \dots a_{ik}a_{k} , i = 1 \dots m
-                .\] 
-                Если есть нулевой столбец альф, то а при этих альфах можем выкинуть и элементы b представляются k-1 элементом попали в индуктивное предположение. Нулевых столбцов нет. Мы можем предположить, что $\alpha_{11} \neq 0$
-                \[
-                    b_{2}' =  b_2 - \frac{\alpha_{21}}{\alpha_{11}}b_1
-                .\] 
-                \[
-                b_3' = b_3  - \frac{\alpha_{31}}{\alpha_{11}}b_1
-                .\] 
-                Элементы b' зависимы по индуктивному предположению
-                \[
-                \gamma_2 b_2' + \gamma_3 b_3` + \dots \gamma_{m}b_{n}' = \overline{0}
-                .\] 
-         \end{enumerate}
-     \end{proof}
+\maketitle
+\section{Линейное пространство, свойства, примеры}
+Есть множество L = $\{a,b,\dots\}$ и есть некоторое поле  $P$
+\begin{definition}
+	L называется линейным пространством над полем P, если выполняются следущие условия
+	\begin{enumerate}
+		\item $\forall a,b \in L ~ \exists ! c : a + b = c$
+		\item $\forall a,b,c \in L : (a + b) + c = a + (b + c)$
+		\item $\exists  \overline{0} \in L \forall  a \in L a + 0 = a$
+		\item $\forall  a\in L \exists  \overline{a} \in L : a +  \overline{a} = \overline{0}$
+		\item $a + b = b + a \forall  a,b \in L$
+	\end{enumerate}
+	И существует операция $\forall  a\in L \forall  \alpha \in P \exists ! d \in L : \alpha a = d$
+	\begin{enumerate}
+		\item $\alpha , \beta \in  P a \in L = (\alpha + \beta)a = \alpha a + \beta a$
+		\item  $\forall  a,b \in L , \forall \alpha \in P \alpha(a + b) = \alpha a + \alpha b $
+		\item $\exists  1 \in P 1a = a \forall a \in L$
+		\item $\alpha(\beta a) = (\alpha \beta)a \forall a \in L \forall \alpha ,\beta \in P $
+	\end{enumerate}
+\end{definition}
+\subsection{Свойства операций}
+\begin{enumerate}
+	\item $\exists ! \overline{0}$
+	      Пусть есть два ноля тогда их сумма может быть и первым и вторым значит они равны.
+	\item $\forall  a\in L \exists ! \overline{a}$
+	      Предполагаем что для какого-то а обратный не единственный, найдется два обратных $\overline{a_1} + a + \overline{a_2}$
+	      \[
+		      \overline{a_1} + (a + \overline{a_2}) = a_1 + \overline{0} = a_1
+		      .\]
+	      \[
+		      (\overline{a_1} + a) + \overline{a_2} = (a + \overline{a_1}) + \overline{a_{2}} = \overline{0} + \overline{a_2} = \overline{a_2} + \overline{0} = \overline{a_2}
+		      .\]
+	\item $a , b \in L \exists  c \in L : a  = b + c$ c называется разностью $a,b$
+	      Докажем что разность существует для любых двух элементов и она единсвенная.
+	      $(a + \overline{b}) + b = a + (\overline{b} + b) = a + (b + \overline{b}) = a + \overline{0} = a$
+	\item $0a = \overline{0} \forall \in L$
+	      \[
+		      a + 0a = 1a + 0a = (1 + 0)a = 1a = a
+		      .\]
+	\item $(-1)a = \overline{a} \forall  a\in L$
+	      \[
+		      a + (-1)a = 1a + (-1)a = (1 + (-1))a = 0a = 0
+		      .\]
+\end{enumerate}
+\subsection{Примеры}
+\begin{enumerate}
+	\item Векторы на плоскости и в пространстве.
+	\item Векторы с $n$ координат.
+	\item Матрицы из вещ чисел  $n \times m$
+	\item  $\{\overline{0}\}$ = L, $P = \mathbb{R}$
+	\item $L =R_{+} ~ P = \mathbb{R} ~ a + b = ab ~ \alpha a = a^{\alpha}$
+	\item L - множество всех полиномов степени не старше n $(P_{n}(t))$.
+	\item L - множество всех функций непрерывных на отрезке от 0 до 1.
+\end{enumerate}
+Мы будем терминологически разделять компклесные и вещественные линейные пространства.
+\begin{definition}
+	Есть поле P, повесим над ним два линейных пространства $L, L'$. Эти два линейных пространства
+	изоморфны друг другу, если между элементами существует биекция,такая что
+	\begin{enumerate}
+		\item $(a + b)' = a' + b' \forall  a, b \in L$ Образ суммы равен сумме образов.
+		\item $(\alpha a)' = \alpha a', \alpha \in P$
+	\end{enumerate}
+\end{definition}
+\section{Линейная зависимость, базис, размерность}
+Рассмотрим $a_1,a_2,\dots,a_{n} \in L$
+\begin{definition}[Линейная комбинация]
+	\[
+		\alpha_1 a_1 + \alpha_2a_2 + \dots + \alpha_{n}a_{n} = \sum_{i=1}^{n} \alpha_{i} a_{i}
+		.\]
+\end{definition}
+Если линейная комбинация равна нулю, то она называется нулевой или тривиальной.
+\begin{definition}[Линейная независимость]
+	Система элементов являются линейно независимыми, если их нулевая линейная комбинация достигается при всех нулевых коэффициентов.
+\end{definition}
+\begin{definition}[Линейная зависимость]
+	Если нулевую комбинацию можно получить, имея не нулевые коэффициенты, то она
+	линейно зависимая
+\end{definition}
+\subsection{Примеры}
+\begin{enumerate}
+	\item Векторы на плоскость $\vec{v_1} = \{0,1\} \vec{v_2} =\{1,0\}$
+	      \[
+		      \alpha(1,0) + \beta(0,1) = (\alpha,\beta) = 0 \implies \alpha = 0 \land \beta = 0
+		      .\]
+\end{enumerate}
+\subsection{Свойства}
+\begin{enumerate}
+	\item Если в системе элементов есть нейтральный элемент, то она линейно зависимая.
+	\item Если в системе есть два одинаковых, то она линейно зависимая.
+	\item Подномножество совокупность линейно зависимое $\implies$ вся совокупность линейно зависимая.
+	\item Все подмножества линейно независимой системы линейно независимые.
+\end{enumerate}
+\begin{theorem}
+	Система элементов линейно зависимой $\iff$ хотя бы один из элементов представлял собой линейную комбинацию остальных элементов.
+\end{theorem}
+\begin{proof}
+	Необходимость. $\alpha_{i} \neq 0$ $\alpha_{i}a_{i} = -\alpha_1 a_{1} - \dots - \alpha_{n} a_{n}$
+	Достаточность $a_{i} = \beta_1 a_{1} + \dots + \beta_{n} a_{n}$
+\end{proof}
+\begin{theorem}
+	\[
+		a_1,\dots,a_{k} \in L, b_1,\dots,b_{m} \in L
+		.\]
+	Любой элемент второй системы можно представить как линейную комбинацию первой.
+	$m > k \implies $ элементы b линейно зависимы
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item $k = 1$
+		      \[
+			      b_1 = \alpha_{1} a_{1}
+			      .\]
+		      \[
+			      b_2 = \alpha_{2}a_1
+			      .\]
+		      \[
+			      \dots
+			      .\]
+		      \[
+			      b_{m} = \alpha_{m} a_1
+			      .\]
+		      \[
+			      -\alpha_2 b_1 + \alpha_1 b_2 + 0b_3 + \dots + 0 b_{m} = 0
+			      .\]
+		\item
+		      Утверждение теоремы верно для $k - 1$
+		      \[
+			      b_1 = \alpha_{11} a_1 + \alpha_{12} a_{2} + \dots + \alpha_{1k}a_{k}
+			      .\]
+		      \[
+			      b_{i} = a_{i1}a_1 + \dots a_{ik}a_{k} , i = 1 \dots m
+			      .\]
+		      Если есть нулевой столбец альф, то а при этих альфах можем выкинуть и элементы b представляются k-1 элементом попали в индуктивное предположение. Нулевых столбцов нет. Мы можем предположить, что $\alpha_{11} \neq 0$
+		      \[
+			      b_{2}' =  b_2 - \frac{\alpha_{21}}{\alpha_{11}}b_1
+			      .\]
+		      \[
+			      b_3' = b_3  - \frac{\alpha_{31}}{\alpha_{11}}b_1
+			      .\]
+		      Элементы b' зависимы по индуктивному предположению
+		      \[
+			      \gamma_2 b_2' + \gamma_3 b_3` + \dots \gamma_{m}b_{n}' = \overline{0}
+			      .\]
+	\end{enumerate}
+\end{proof}
 \section{Базис и размерность линейного пространства. Переход к другому базису.}
 Пусть у нас есть линейное пространство L над полем P.
 \begin{definition}[Базис]
-    Базисом линейного пространства L будем называть линейно независимую систему 
-     $e_1,\dots,e_{n} \in L$ такую что $\forall  x\in L ~ x = \alpha_1 e_1 + \dots + \alpha_{n}e_{n}$ Альфы -- это координаты x по базису e.
-     \[
-     \alpha = (\alpha_1,\alpha_2,\dots,\alpha_{n})
-     .\] 
-     \[
-     e = \begin{pmatrix} 
-     e_1\\
-     e_2\\
-     \dots\\
-     e_{n}
-     \end{pmatrix} 
-     .\] 
+	Базисом линейного пространства L будем называть линейно независимую систему
+	$e_1,\dots,e_{n} \in L$ такую что $\forall  x\in L ~ x = \alpha_1 e_1 + \dots + \alpha_{n}e_{n}$ Альфы -- это координаты x по базису e.
+	\[
+		\alpha = (\alpha_1,\alpha_2,\dots,\alpha_{n})
+		.\]
+	\[
+		e = \begin{pmatrix}
+			e_1   \\
+			e_2   \\
+			\dots \\
+			e_{n}
+		\end{pmatrix}
+		.\]
 \end{definition}
 \begin{theorem}
-   Для выбраного элемента и базиса есть только один набор координат.
+	Для выбраного элемента и базиса есть только один набор координат.
 \end{theorem}
 \begin{proof}
-   Пусть существуют $x, e_1 \dots e_{n}$ такие что 
-   \[
-   x = \alpha_{1} e_{1} + \dots + \alpha_{n} e_{n}
-   .\] 
+	Пусть существуют $x, e_1 \dots e_{n}$ такие что
+	\[
+		x = \alpha_{1} e_{1} + \dots + \alpha_{n} e_{n}
+		.\]
 \end{proof}
 \begin{theorem}
-   \[
-   x = \alpha_{1} e_1 + \dots + \alpha_{n} e_{n}
-   .\]  
-   \[
-   y = \beta_{1} e_1 + \dots + \beta_{n}y_{n}
-   .\] 
-   \begin{enumerate}
-       \item $x + y = \sum_{i=1}^{n} (\alpha_{i} + \beta_{i})e_{i}$
-      \item $\lambda \in P \lambda x = \sum_{i = 1}^{n} (\lambda x_{i})$
-   \end{enumerate}
+	\[
+		x = \alpha_{1} e_1 + \dots + \alpha_{n} e_{n}
+		.\]
+	\[
+		y = \beta_{1} e_1 + \dots + \beta_{n}y_{n}
+		.\]
+	\begin{enumerate}
+		\item $x + y = \sum_{i=1}^{n} (\alpha_{i} + \beta_{i})e_{i}$
+		\item $\lambda \in P \lambda x = \sum_{i = 1}^{n} (\lambda x_{i})$
+	\end{enumerate}
 \end{theorem}
 \begin{definition}[Размерность]
-    Линейное пространство $L$  $(\dim{L} = n)$ Размерность L равна n если в этом пространстве существует система из n линейных независимых элементов, а любая система из n +1 линейно зависимая
+	Линейное пространство $L$  $(\dim{L} = n)$ Размерность L равна n если в этом пространстве существует система из n линейных независимых элементов, а любая система из n +1 линейно зависимая
 
-    Если в линейном пространстве существует произвольное количество линейно независимых элементов то размерность бесконечная
+	Если в линейном пространстве существует произвольное количество линейно независимых элементов то размерность бесконечная
 \end{definition}
 \begin{theorem}
-    Любые n линейные независимые элементы n-мерного пространства образуют базис.
+	Любые n линейные независимые элементы n-мерного пространства образуют базис.
 \end{theorem}
 \begin{proof}
-    С линейной назависимостью все ясно. Берем произвольный $x \in L$ добавили его в линейно независимую систему, получили линейно зависимую.
-     \[
-         \alpha_1 e_1 +  \dots \alpha_{n}e_{n} \alpha x= 0
-    .\] 
-    \[
-    x = -\sum_{i = 1}^{n} \frac{\alpha_{i}}{\alpha}e_{i}
-    .\] 
+	С линейной назависимостью все ясно. Берем произвольный $x \in L$ добавили его в линейно независимую систему, получили линейно зависимую.
+	\[
+		\alpha_1 e_1 +  \dots \alpha_{n}e_{n} \alpha x= 0
+		.\]
+	\[
+		x = -\sum_{i = 1}^{n} \frac{\alpha_{i}}{\alpha}e_{i}
+		.\]
 \end{proof}
 \begin{theorem}
-    Если есть базис из n элементов, то $\dim{L} = n$
+	Если есть базис из n элементов, то $\dim{L} = n$
 \end{theorem}
 \begin{proof}
-    По последней теореме с прошлого занятия. Взяли $n + 1$ любых элементов из L, каждый из них раскладывается по базису.
+	По последней теореме с прошлого занятия. Взяли $n + 1$ любых элементов из L, каждый из них раскладывается по базису.
 \end{proof}
 \begin{theorem}
-    Любые два Линеныйных пространства одинаковой размерности над одним полем изоморфны.
+	Любые два Линеныйных пространства одинаковой размерности над одним полем изоморфны.
 \end{theorem}
 \begin{proof}
-    \[
-        \dim{L} = \dim{L'} = n
-    .\] 
-    Назначим взаимно однозначное соответветсвие. У L базис $e_1,e_2,\dots,e_1$, У L' базис $e_1',e_2',\dots,e_{n}'$. Биекция между базисами есть.
+	\[
+		\dim{L} = \dim{L'} = n
+		.\]
+	Назначим взаимно однозначное соответветсвие. У L базис $e_1,e_2,\dots,e_1$, У L' базис $e_1',e_2',\dots,e_{n}'$. Биекция между базисами есть.
 
-    Берем $x \in L$ 
-     \[
-    x = \alpha_1 e_1 + \dots \alpha_{n} e_{n}
-    .\] 
-    \[
-    x' = \alpha_{1} e_1' + \dots + \alpha_{n}e_{n}'
-    .\] 
-    Действительно является изоморфизмом.
+	Берем $x \in L$
+	\[
+		x = \alpha_1 e_1 + \dots \alpha_{n} e_{n}
+		.\]
+	\[
+		x' = \alpha_{1} e_1' + \dots + \alpha_{n}e_{n}'
+		.\]
+	Действительно является изоморфизмом.
 \end{proof}
-Пусть в линейном пространстве два базиса $e_1,\dots,e_{n} \land e_1'\dots e_{n}'$ 
+Пусть в линейном пространстве два базиса $e_1,\dots,e_{n} \land e_1'\dots e_{n}'$
 \[
-x = \alpha_{1}e_1 + \dots \alpha_{n} e_{n} = \alpha_1'e_1' + \dots + \alpha_{n}' e_{n}'
-.\] 
+	x = \alpha_{1}e_1 + \dots \alpha_{n} e_{n} = \alpha_1'e_1' + \dots + \alpha_{n}' e_{n}'
+	.\]
 \[
-e_1' = p_{11}e_1 + p_{12}e_2 + \dots + p_{1n}e_{n}
-.\] 
+	e_1' = p_{11}e_1 + p_{12}e_2 + \dots + p_{1n}e_{n}
+	.\]
 \[
-e_{i}' = p_{i1}e_1 + p_{i2} + \dots + p_{in}e_{n}
-.\] 
+	e_{i}' = p_{i1}e_1 + p_{i2} + \dots + p_{in}e_{n}
+	.\]
 Из p можем собрать матрицу.
 \[
-e' = P e
-.\] 
+	e' = P e
+	.\]
 \[
-    e = P'e'
-.\] 
+	e = P'e'
+	.\]
 Обе матрицы обратимы, значит обратимы, значит ранги обоих матриц равны n.
- \[
-x = \alpha e = \alpha' e'
-.\] 
 \[
-\alpha e = \alpha' P e
-.\] 
+	x = \alpha e = \alpha' e'
+	.\]
 \[
-\alpha = \alpha' P
-.\] 
+	\alpha e = \alpha' P e
+	.\]
 \[
-\alpha' = \alpha P^{-1}
-.\] 
+	\alpha = \alpha' P
+	.\]
+\[
+	\alpha' = \alpha P^{-1}
+	.\]
 \subsection{Пример}
 Есть плоскость, выбрали стандартный базис $e_1 = (0,1), e_2 = (1,0)$. Возьмем в качестве нового базиса эти векторы, повернутые на угол  $\varphi$
 Нужна матрица преобразования.
 \[
-    e_1' = \cos{( \varphi )} e_1 + \cos{( \varphi )} e_2
-.\] 
+	e_1' = \cos{( \varphi )} e_1 + \cos{( \varphi )} e_2
+	.\]
 \[
-    e_2' = -\sin{(\varphi)} e_1 + \cos{(\varphi)} e_2
-.\] 
+	e_2' = -\sin{(\varphi)} e_1 + \cos{(\varphi)} e_2
+	.\]
 \[
-P = 
-\begin{pmatrix} 
-    \cos{\phi}  & \sin{\phi}\\
-    -\sin{\phi} & \cos{\phi}
-\end{pmatrix} 
-.\] 
+	P =
+	\begin{pmatrix}
+		\cos{\phi}  & \sin{\phi} \\
+		-\sin{\phi} & \cos{\phi}
+	\end{pmatrix}
+	.\]
 \section{Подпространства и линейная оболочка}
 \begin{definition}[Подпространство]
-    L -- линейное пространство над $\mathbf{P}$.  $L_1 \subset L$ называется подространством пространства L если $\forall  x, y \in L_1 \forall  \alpha,\beta \in \mathrm{P}
-    ~ \alpha x + \beta y \in L_1$
+	L -- линейное пространство над $\mathbf{P}$.  $L_1 \subset L$ называется подространством пространства L если $\forall  x, y \in L_1 \forall  \alpha,\beta \in \mathrm{P}
+		~ \alpha x + \beta y \in L_1$
 \end{definition}
 Любое линейное подпространство само является линейным пространством.
 
 В пространстве выбрали подпространство $L_1$ ее базис образует линейно незавсимый набор элементов относительно $L$. Ее можно дополнить до базиса $L$
 \subsection{Примеры}
 \begin{enumerate}
-    \item Векторы на плоскости, которые лежат на осях.
-    \item Многочлены $P^{0}_{n}(t)$ -- многочлены, которые в нуле имеют значение 0.
+	\item Векторы на плоскости, которые лежат на осях.
+	\item Многочлены $P^{0}_{n}(t)$ -- многочлены, которые в нуле имеют значение 0.
 \end{enumerate}
 Задача на подумать. Размерность пространства полиномов, у которых сумма коэфициентов ноль.
 \begin{definition}[Линейная оболочка.]
-    В линейном пространстве L выбираем произвольное количество элементов. Линейной оболочкой этих элементов будем называть множество всех линейных комбинаций из этих элементов
-    \[
-    x,y,\dots, \in L
-    .\] 
-    \[
-        \alpha x + \beta y + \dots ~ \alpha,\beta \in \mathbf{P}
-    .\] 
-    $x,y \dots$ система образующих
+	В линейном пространстве L выбираем произвольное количество элементов. Линейной оболочкой этих элементов будем называть множество всех линейных комбинаций из этих элементов
+	\[
+		x,y,\dots, \in L
+		.\]
+	\[
+		\alpha x + \beta y + \dots ~ \alpha,\beta \in \mathbf{P}
+		.\]
+	$x,y \dots$ система образующих
 \end{definition}
 \subsection{Пример}
 \begin{enumerate}
-    \item Комплексные числа -- это линейная оболочка над $1,i$
+	\item Комплексные числа -- это линейная оболочка над $1,i$
 \end{enumerate}
 \begin{theorem}
-    Линейная оболочка является подпространством.
+	Линейная оболочка является подпространством.
 \end{theorem}
 \begin{theorem}
-    Линейная оболочка является наименьшим подпространством содержащим систему $x,y,\dots$
-    
-    Любое линейное подпространство, которое содержит $x,y,z,\dots$, будет содержать оболочку.
+	Линейная оболочка является наименьшим подпространством содержащим систему $x,y,\dots$
+
+	Любое линейное подпространство, которое содержит $x,y,z,\dots$, будет содержать оболочку.
 \end{theorem}
 \begin{theorem}
-    Размерность линейной оболочки равна количеству линейно независимых векторов в ее образующей системе.
+	Размерность линейной оболочки равна количеству линейно независимых векторов в ее образующей системе.
 \end{theorem}
 \begin{proof}
-    Размерность совпадает с количеством элементов в базисе. Взяли систему, нашли самое большой линейно-независмое подмножество. Остальные элементы это линейная комбинация этих элементов.
+	Размерность совпадает с количеством элементов в базисе. Взяли систему, нашли самое большой линейно-независмое подмножество. Остальные элементы это линейная комбинация этих элементов.
 \end{proof}
 \begin{theorem}
-    Размерность линейной оболочки равна рангу матрицы, составленной из координат элементов образующей системы в произвольном базисе L.
+	Размерность линейной оболочки равна рангу матрицы, составленной из координат элементов образующей системы в произвольном базисе L.
 \end{theorem}
 \begin{proof}
-    \[
-    x,y,z \dots \in L
-    .\] 
-    Каждый раскладываем по базису.
+	\[
+		x,y,z \dots \in L
+		.\]
+	Каждый раскладываем по базису.
 \end{proof}
 \section{Линейная независимость относительно подпространства. Сумма и пересечение подпространств.}
 \begin{definition}
-    L -- линейное пространство, в этом линейном пространстве есть линейное подпространство $L_1 \subset L$. $v_1,\dots v_{k} \in L$ 
-    Мы будем говорить, что эти элемены линейно независимые относительно $L_1$ , если
-    \[
-    \alpha_1 v_1 + \dots + \alpha_{k} v_{k} \in L_1
-    .\] 
-    выполняется, только если все альфы нули.
+	L -- линейное пространство, в этом линейном пространстве есть линейное подпространство $L_1 \subset L$. $v_1,\dots v_{k} \in L$
+	Мы будем говорить, что эти элемены линейно независимые относительно $L_1$ , если
+	\[
+		\alpha_1 v_1 + \dots + \alpha_{k} v_{k} \in L_1
+		.\]
+	выполняется, только если все альфы нули.
 \end{definition}
 \begin{theorem}
-    $L_1 \subset L, u_1\dots u_{m}$ базис. Для того чтобы вектора $v_1,\dots,v_{k}$ 
-    Были линейно независимы относительно $L_1$ $\iff$  $u,v$ была линейно независимой
+	$L_1 \subset L, u_1\dots u_{m}$ базис. Для того чтобы вектора $v_1,\dots,v_{k}$
+	Были линейно независимы относительно $L_1$ $\iff$  $u,v$ была линейно независимой
 \end{theorem}
 \begin{proof}
-    Прямой ход. Создаем линейную комбинацию относительно
-    \[
-    \alpha_1 v_1 + \dots \alpha_{k} v_{k} + \beta_1 u_1 + \dots + \beta_{m} u_{m} = 0
-    .\] 
-    \[
-    \alpha_1 v_1 + \dots + \alpha_{k}v_{k} = -\beta_1 u_1 - \dots - b_{m}u_{m} \in L_1
-    .\] 
-    Левая комбиация это ноль, так как линйно независима относительно $L_1$, правая линейно независима
+	Прямой ход. Создаем линейную комбинацию относительно
+	\[
+		\alpha_1 v_1 + \dots \alpha_{k} v_{k} + \beta_1 u_1 + \dots + \beta_{m} u_{m} = 0
+		.\]
+	\[
+		\alpha_1 v_1 + \dots + \alpha_{k}v_{k} = -\beta_1 u_1 - \dots - b_{m}u_{m} \in L_1
+		.\]
+	Левая комбиация это ноль, так как линйно независима относительно $L_1$, правая линейно независима
 
-    Обратный предположим, что $\alpha_1 v_1 + \dots + \alpha_{k}v_{k} \neq 0 \in L_1$.
-    \[
-    \alpha_1v_1 + \dots \alpha_{k} v_{k} = \gamma_{1}u_{1} + \dots \gamma_{m}u_{m}
-    .\] 
-    \[
-    \sum_{i=1}^{k}\alpha_{i}v_{i} - \sum_{i = 1}^{m}\gamma_{i} u_{i} = 0
-    .\] 
-    Противоречие.
+	Обратный предположим, что $\alpha_1 v_1 + \dots + \alpha_{k}v_{k} \neq 0 \in L_1$.
+	\[
+		\alpha_1v_1 + \dots \alpha_{k} v_{k} = \gamma_{1}u_{1} + \dots \gamma_{m}u_{m}
+		.\]
+	\[
+		\sum_{i=1}^{k}\alpha_{i}v_{i} - \sum_{i = 1}^{m}\gamma_{i} u_{i} = 0
+		.\]
+	Противоречие.
 \end{proof}
 \begin{definition}[Базис относительно подпространства]
-    $v_1,\dots,v_{k} \in L$ будем называть базисом относительно $L_1 \subset L$ 
-    если 
-    \begin{enumerate}
-        \item $v_1,\dots ,v_{k}$ линейно независимы относительно $L_1$
-        \item $\forall  x \in L  ~ x = \alpha_1v_1 + \dots \alpha_{k}v_{k} + y ~ y\in L_1$
-    \end{enumerate}
+	$v_1,\dots,v_{k} \in L$ будем называть базисом относительно $L_1 \subset L$
+	если
+	\begin{enumerate}
+		\item $v_1,\dots ,v_{k}$ линейно независимы относительно $L_1$
+		\item $\forall  x \in L  ~ x = \alpha_1v_1 + \dots \alpha_{k}v_{k} + y ~ y\in L_1$
+	\end{enumerate}
 \end{definition}
 \begin{theorem}
-    Для того, чтобы система была базисом была относительно $L_1$ необходимо и достачно
-    система $u,v$ была базисом  $L$
+	Для того, чтобы система была базисом была относительно $L_1$ необходимо и достачно
+	система $u,v$ была базисом  $L$
 \end{theorem}
 \begin{proof}
-    Необходимость. у представляем как линейную комбинацию $u$.
-    Достаточность самим.
+	Необходимость. у представляем как линейную комбинацию $u$.
+	Достаточность самим.
 \end{proof}
 \[
-L_{j}\subset L_{j - 1}\subset \dots L_2 \subset L_1 \subset L
-.\] 
+	L_{j}\subset L_{j - 1}\subset \dots L_2 \subset L_1 \subset L
+	.\]
 \begin{theorem}
-    Любую систему линейно независимую относительно $L_1$ до базиса L относительно $L_1$
+	Любую систему линейно независимую относительно $L_1$ до базиса L относительно $L_1$
 \end{theorem}
 \begin{proof}
-    Есть система линейно независимая относительная $L_1$. u,v -- линейно независимая совокупность дополним до базиса L. Получили базис относительно $L_1$, так как у нас выходит v, что дополнили + сумма из  $L_1$
+	Есть система линейно независимая относительная $L_1$. u,v -- линейно независимая совокупность дополним до базиса L. Получили базис относительно $L_1$, так как у нас выходит v, что дополнили + сумма из  $L_1$
 \end{proof}
 \section{Сумма и пересечение подпространств.}
 Есть линенйное пространство L, $L_1,L_2$  его подпространства
 \begin{definition}
-    \[
-        L_1 + L_2 := \{z  \in L | z = x + y, x \in L_1, y \in L_2\}
-    .\] 
+	\[
+		L_1 + L_2 := \{z  \in L | z = x + y, x \in L_1, y \in L_2\}
+		.\]
 \end{definition}
 \begin{definition}
-    \[
-        L_1 \cap L_2 := \{x \in L | x \in L_1,x\in L_2\}
-    .\] 
+	\[
+		L_1 \cap L_2 := \{x \in L | x \in L_1,x\in L_2\}
+		.\]
 \end{definition}
 \begin{theorem}
-    Сумма и пересечение подпространств сами являются подпросранствами
+	Сумма и пересечение подпространств сами являются подпросранствами
 \end{theorem}
 \begin{theorem}
-    \[
-        \dim{L_1} + \dim{L_2} = \dim{(L_1 +  L_2)} + \dim{(L_1 \cap L_2)}
-    .\] 
+	\[
+		\dim{L_1} + \dim{L_2} = \dim{(L_1 +  L_2)} + \dim{(L_1 \cap L_2)}
+		.\]
 \end{theorem}
 \begin{proof}
-    \[
-    \dim{L_1} = p
-    .\] 
-    \[
-        \dim{L_2}  = g
-    .\] 
-    \[
-        \dim{(L_1 + L_2)} = s
-    .\] 
-    \[
-        \dim{L_1 \cap L_2} = t
-    .\] 
-   \[
-       L_1 : u_1,\dots ,u_{p} v_1 \dots v_{p - t} \text{базис}
-   .\] 
-   \[
-   L_2 : u_1 \dots u_{t} w_1 \dots w_{g - t}
-   .\] 
-   \[
-   \alpha u + \beta v  + \gamma w =  0
-   .\] 
-   \[
-   \alpha u + \beta v  = -\gamma w = \nu u
-   .\] 
-   Левая штука из $L_1$ , правая из $L_2$. Они из пересечения. Через $\nu$ разложили в базисе пересечения
-    \[
-   \nu u + \gamma w = 0
-   .\] 
-   Получили нулевую линейную комбинацию базиса $L_2$
-   \[
-   \alpha u + \beta v = 0
-   .\] 
-   \[
-   z \in L_1 + L_2
-   .\]  
-   \[
-   t = x + y 
-   .\] 
-   x, y разложили по базису
+	\[
+		\dim{L_1} = p
+		.\]
+	\[
+		\dim{L_2}  = g
+		.\]
+	\[
+		\dim{(L_1 + L_2)} = s
+		.\]
+	\[
+		\dim{L_1 \cap L_2} = t
+		.\]
+	\[
+		L_1 : u_1,\dots ,u_{p} v_1 \dots v_{p - t} \text{базис}
+		.\]
+	\[
+		L_2 : u_1 \dots u_{t} w_1 \dots w_{g - t}
+		.\]
+	\[
+		\alpha u + \beta v  + \gamma w =  0
+		.\]
+	\[
+		\alpha u + \beta v  = -\gamma w = \nu u
+		.\]
+	Левая штука из $L_1$ , правая из $L_2$. Они из пересечения. Через $\nu$ разложили в базисе пересечения
+	\[
+		\nu u + \gamma w = 0
+		.\]
+	Получили нулевую линейную комбинацию базиса $L_2$
+	\[
+		\alpha u + \beta v = 0
+		.\]
+	\[
+		z \in L_1 + L_2
+		.\]
+	\[
+		t = x + y
+		.\]
+	x, y разложили по базису
 \end{proof}
 \section{Примеры}
 \begin{enumerate}
-    \item $L$ -- трехмерные вектора.
+	\item $L$ -- трехмерные вектора.
 \end{enumerate}
 \section{Алгоритм}
 Берутся векторы, которые не вошли в базис суммы, раскладываеются по базису суммы.Теперь берем базисный вектор пересечения (часть разложения, где только векторы из $L_1$)
 \section{Прямая сумма}
 \[
-\exists  ! x_1 \in L_1 , x_2 \in L_2 : x = x_1 + x_2
-.\] 
+	\exists  ! x_1 \in L_1 , x_2 \in L_2 : x = x_1 + x_2
+	.\]
 Множесвто таких иксов называется прямая сумма. $L_1 \oplus L_2$
 \begin{theorem}[]
-    \[
-    L = L_1 \oplus L_2 \iff
-    .\] 
-    \begin{enumerate}
-        \item $L_1 \cap L_2 = \{ \emptyset \}$ 
-        \item $\dim{L} = \dim{L_1} + \dim{L_2}$
-    \end{enumerate}
+	\[
+		L = L_1 \oplus L_2 \iff
+		.\]
+	\begin{enumerate}
+		\item $L_1 \cap L_2 = \{ \emptyset \}$
+		\item $\dim{L} = \dim{L_1} + \dim{L_2}$
+	\end{enumerate}
 \end{theorem}
 \begin{proof}
-    Предположим, что в пересечение есть не только нейтральный элемент.
-    \[
-    \exists x \neq 0 , x \in L_1 \cap L_2
-    .\] 
-    \[
-    x = x + 0 = 0 + x
-    .\] 
-    Два разложения по $L_1,L_2$
-    В другую сторону. Есть базис в $L_1$, есть базис в  $L_2$ 
-    \[
-    L_1 : u_1,\dots,u_{k}
-    .\] 
-    \[
-    L_2 : v_1,\dots,v_{m}
-    .\] 
-    Базис $L$ можно соствить из объединения этих базисов.
-     \[
-    \sum \alpha u + \sum \beta v = 0
-    .\] 
-    \[
-    \sum \alpha u = - \sum \beta v
-    .\] 
-    Элемент из $L_1$ равен элементу из $L_2$, тоесть они из $L_1 \cap L_2 = \emptyset$
-    произвольный элемент разложили по базису из L. Получили определение прямой суммы
+	Предположим, что в пересечение есть не только нейтральный элемент.
+	\[
+		\exists x \neq 0 , x \in L_1 \cap L_2
+		.\]
+	\[
+		x = x + 0 = 0 + x
+		.\]
+	Два разложения по $L_1,L_2$
+	В другую сторону. Есть базис в $L_1$, есть базис в  $L_2$
+	\[
+		L_1 : u_1,\dots,u_{k}
+		.\]
+	\[
+		L_2 : v_1,\dots,v_{m}
+		.\]
+	Базис $L$ можно соствить из объединения этих базисов.
+	\[
+		\sum \alpha u + \sum \beta v = 0
+		.\]
+	\[
+		\sum \alpha u = - \sum \beta v
+		.\]
+	Элемент из $L_1$ равен элементу из $L_2$, тоесть они из $L_1 \cap L_2 = \emptyset$
+	произвольный элемент разложили по базису из L. Получили определение прямой суммы
 \end{proof}
 \begin{theorem}
-    Для того чтобы $L = L_1 \oplus L_2 \iff $ объединение базиса $L_1$ $L_2$ будет базисом L.
+	Для того чтобы $L = L_1 \oplus L_2 \iff $ объединение базиса $L_1$ $L_2$ будет базисом L.
 \end{theorem}
 \begin{definition}
-    \[
-    L_1 \subset L
-    .\] 
-    \[
-        L^{\nu}_{1} - \text{Дополнение до L}
-    .\] 
-    \[
-    L_1 \oplus L_1^{\nu} = L
-    .\] 
+	\[
+		L_1 \subset L
+		.\]
+	\[
+		L^{\nu}_{1} - \text{Дополнение до L}
+		.\]
+	\[
+		L_1 \oplus L_1^{\nu} = L
+		.\]
 \end{definition}
 \section{Евклидовы и унитарные пространства}
-У нас есть линейное пространство $E$ над полем $P$. 
+У нас есть линейное пространство $E$ над полем $P$.
 \begin{definition}[Евклидовое пространство]
-    $E$ -- евклидово пространство.
-     \[
-    \forall  x,y \in E ~ \exists  (x,y) \in \mathbb{R}
-    .\] 
-    Ставится в соответсвие вещественное число, которое назовем скалярным произведением. Это отображение удовлетворяет следущим пунктам
-    \begin{enumerate}
-        \item $(x,y) = (y,x) ~ \forall  x, y \in E$
-        \item $(x + y,z) = (x,z) + (y,z) ~\forall  x,y,z$
-        \item $(\lambda x,y) = \lambda(x,y) ~ \forall  x,y \in E, \forall  \lambda \in P$
-        \item $(x,x) \ge 0 \forall  x \in E (x,x) = 0 \iff x = 0$
-    \end{enumerate}
+	$E$ -- евклидово пространство.
+	\[
+		\forall  x,y \in E ~ \exists  (x,y) \in \mathbb{R}
+		.\]
+	Ставится в соответсвие вещественное число, которое назовем скалярным произведением. Это отображение удовлетворяет следущим пунктам
+	\begin{enumerate}
+		\item $(x,y) = (y,x) ~ \forall  x, y \in E$
+		\item $(x + y,z) = (x,z) + (y,z) ~\forall  x,y,z$
+		\item $(\lambda x,y) = \lambda(x,y) ~ \forall  x,y \in E, \forall  \lambda \in P$
+		\item $(x,x) \ge 0 \forall  x \in E (x,x) = 0 \iff x = 0$
+	\end{enumerate}
 \end{definition}
 \subsection{Свойства.}
 \begin{enumerate}
-    \item $(x,y+z) = (x,y) + (x,z)$
-        \[
-            (y + z,x ) = (y,x) + (z,x) = (x,y) + (x,z)
-        .\] 
-    \item $(x,\lambda y) = \lambda (x,y)$
-    \item $(0,x) = 0 $
-    \item $( \sum \alpha_{i} u_{i},\sum \beta_{j} v_{j} ) = \sum_{i}\sum_{j}\alpha_{i}b_{j}(u_{i},v_{j})$ 
-    \item 
-        \begin{theorem}[Неравенство Коши-Буняковского]
-            $\forall x,y \in E ~ (x,y)^{2} \le (x,x)(y,y)$
-        \end{theorem}
-        \begin{proof}
-            Если x или y равны 0, то се понятно. Рассмотрим
-            \[
-            \lambda x - y
-            .\] 
-            \[
-                (\lambda x - y,\lambda x - y) = (\lambda x,\lambda x) - (y,\lambda x)
-                - (\lambda x, y) + (y,y) = 
-                \lambda^2 (x,x) - 2\lambda (x,y) + (y,y) \ge  0
-            .\] 
-            \[
-            D = (x,y)^2 - (x,x)(y,y) \le  0
-            .\] 
-        \end{proof}
+	\item $(x,y+z) = (x,y) + (x,z)$
+	      \[
+		      (y + z,x ) = (y,x) + (z,x) = (x,y) + (x,z)
+		      .\]
+	\item $(x,\lambda y) = \lambda (x,y)$
+	\item $(0,x) = 0 $
+	\item $( \sum \alpha_{i} u_{i},\sum \beta_{j} v_{j} ) = \sum_{i}\sum_{j}\alpha_{i}b_{j}(u_{i},v_{j})$
+	\item
+	      \begin{theorem}[Неравенство Коши-Буняковского]
+		      $\forall x,y \in E ~ (x,y)^{2} \le (x,x)(y,y)$
+	      \end{theorem}
+	      \begin{proof}
+		      Если x или y равны 0, то се понятно. Рассмотрим
+		      \[
+			      \lambda x - y
+			      .\]
+		      \[
+			      (\lambda x - y,\lambda x - y) = (\lambda x,\lambda x) - (y,\lambda x)
+			      - (\lambda x, y) + (y,y) =
+			      \lambda^2 (x,x) - 2\lambda (x,y) + (y,y) \ge  0
+			      .\]
+		      \[
+			      D = (x,y)^2 - (x,x)(y,y) \le  0
+			      .\]
+	      \end{proof}
 \end{enumerate}
 \subsection{Унитарные пространства.}
 \begin{definition}[Унитарные пространства]
-    Линейное комплексное пространство называется унитарным, если любым двум элементам ставится в соответсвие комплексное число, которое называется скалярным произведением.
-    $U$
+	Линейное комплексное пространство называется унитарным, если любым двум элементам ставится в соответсвие комплексное число, которое называется скалярным произведением.
+	$U$
 \end{definition}
 \subsubsection{Свойства}
 \begin{enumerate}
-    \item $(x,y) = \overline{(y,x)}$
-    \item $(x+y,z) = (x,z) + (y,z) \forall  x,y,z \in U$
-    \item $(\lambda x,y) = \lambda (x,y) , \forall  x,y \in U,\lambda \in P $
-    \item $(x,x) \ge  0 ~\forall  x \in U, (x,x) = 0 \iff x = 0$
+	\item $(x,y) = \overline{(y,x)}$
+	\item $(x+y,z) = (x,z) + (y,z) \forall  x,y,z \in U$
+	\item $(\lambda x,y) = \lambda (x,y) , \forall  x,y \in U,\lambda \in P $
+	\item $(x,x) \ge  0 ~\forall  x \in U, (x,x) = 0 \iff x = 0$
 \end{enumerate}
 \subsubsection{Примеры}
 \[
-x = (\alpha_1,\dots,\alpha_{n})
-.\] 
+	x = (\alpha_1,\dots,\alpha_{n})
+	.\]
 \[
-y = (\beta_1,\dots,\beta_{n})
-.\] 
+	y = (\beta_1,\dots,\beta_{n})
+	.\]
 \[
-    (x,y) = \sum \alpha_{i} \overline{\beta_{i}}
-.\] 
+	(x,y) = \sum \alpha_{i} \overline{\beta_{i}}
+	.\]
 \[
-    (x,y + z) = \overline{(y + z,x)} = \overline{(y,x),(z,x)} = \overline{(y,z)} + \overline{z,x}=  (x,y) + (x,z)
-.\] 
+	(x,y + z) = \overline{(y + z,x)} = \overline{(y,x),(z,x)} = \overline{(y,z)} + \overline{z,x}=  (x,y) + (x,z)
+	.\]
 \[
-    (x,\lambda x) = \overline{(\lambda y,x)} = \overline{\lambda} (x,y)
-.\] 
+	(x,\lambda x) = \overline{(\lambda y,x)} = \overline{\lambda} (x,y)
+	.\]
 \[
-    (\sum \alpha_{i} u_{i},\sum \beta_{j} v_{j}) = \sum_{i}\sum_{j}
-.\] 
+	(\sum \alpha_{i} u_{i},\sum \beta_{j} v_{j}) = \sum_{i}\sum_{j}
+	.\]
 \begin{theorem}
-\[
-|(x,y)|^2 \le  (x,x)(y,y)
-.\] 
+	\[
+		|(x,y)|^2 \le  (x,x)(y,y)
+		.\]
 \end{theorem}
 \begin{proof}
-    \[
-        (\lambda x - y , \lambda x - y) =
-        |\lambda|^2(x,x) - \overline{\lambda} \overline{(x,y)} - \lambda(x,y) + (y,y) \ge  0
-    .\] 
-    Рассмотрим частный случай
-    \[
-        \lambda = |\lambda| (\cos{\phi} - i \sin{\phi})
-    .\] 
+	\[
+		(\lambda x - y , \lambda x - y) =
+		|\lambda|^2(x,x) - \overline{\lambda} \overline{(x,y)} - \lambda(x,y) + (y,y) \ge  0
+		.\]
+	Рассмотрим частный случай
+	\[
+		\lambda = |\lambda| (\cos{\phi} - i \sin{\phi})
+		.\]
 \end{proof}
 \begin{theorem}[Теорема Грама]
-    \[
-    u_1,\dots,u_{k} \in E
-    .\] 
-    \[
-    \Gamma = 
-    \begin{vmatrix}
-        (u_1,u_1) & (u_1,u_2) & \dots & (u_1,u_{k})\\
-        \dots & \dots & \dots & \dots\\
-        (u_{k},u_1) & (u_{k},u_2) & \dots & (u_{k},u_{k})
-    \end{vmatrix} 
-    .\] 
-    Вектора линейно зависимы
+	\[
+		u_1,\dots,u_{k} \in E
+		.\]
+	\[
+		\Gamma =
+		\begin{vmatrix}
+			(u_1,u_1)   & (u_1,u_2)   & \dots & (u_1,u_{k})   \\
+			\dots       & \dots       & \dots & \dots         \\
+			(u_{k},u_1) & (u_{k},u_2) & \dots & (u_{k},u_{k})
+		\end{vmatrix}
+		.\]
+	Вектора линейно зависимы
 \end{theorem}
 \begin{proof}
-    Дано, что вектора зависимы
-    \[
-    \alpha_{1}u_1 + \dots + \alpha_{k} u_{k} = 0
+	Дано, что вектора зависимы
+	\[
+		\alpha_{1}u_1 + \dots + \alpha_{k} u_{k} = 0
+		.\]
+	\[
+		\alpha (u_1,u_1) + \dots \alpha_{k} (u_1,u_{k}) = 0
+		.\]
+	Дальше так же умножили скалярно на остальные u. Получили однородную систему с ненулевым решением. Ее определитель ноль.\\
+	В обратную сторону.
+	Используем опеределитель как определитель системы
+	\[
+		\begin{cases}
+			(u_1,u_1) \alpha_1 + \dots + (u_1,u_{k}) \alpha_{k} = 0 \\
+			\dots                                                   \\
+			(u_{k},u_1)\alpha_1 + \dots + (u_{k},u_{k}) \alpha = 0
+		\end{cases}
+		.\]
+	\[
+		\begin{cases}
+			(\alpha_1 u_1,\alpha_1 u_1 + \dots + \alpha_{k} u_{k}) = 0 \\
+			\dots                                                      \\
+			(\alpha_{k} u_{k},\alpha_1 u_1 + \dots +  \alpha_{k} u_{k})
+		\end{cases}
+		.\]
+	Набор альф -- ненулевое решение.
+	Все сложили
+	\[
+		(\sum \alpha u, \sum \alpha u)
+		.\]
+	\[
+		\sum \alpha u = 0
+		.\]
+\end{proof}
+\begin{definition}[Нормированный]
+	$x \in E$ нормированный, если  $(x,x) = 1$
+\end{definition}
+\begin{theorem}
+	Любой вектор кроме нуля, можно нормировать.
+\end{theorem}
+\begin{proof}
+	\[
+		(x,x) = \lambda
+		.\]
+	\[
+		\frac{(x,x)}{\lambda} = 1
+		.\]
+	\[
+		(\frac{x}{\sqrt{\lambda} },\frac{x}{\sqrt{\lambda}}) = 1
+		.\]
+\end{proof}
+\section{Ортогональность векторов и подпространств.}
+По умолчанию живем в евклидовом пространстве.
+\begin{definition}[Ортогональность]
+	$x,y \in E, x \perp y := (x,y) = 0$
+\end{definition}
+\begin{definition}[Ортогональная система]
+	Систему векторов называем ортогональной, если все векторы попарно ортогональны и нет нуля.
+\end{definition}
+\begin{definition}[Ортонормированная система.]
+	Если в системе ортогональной системе, все элементы нормированны, то она ортонормированная
+\end{definition}
+\begin{theorem}
+	Ортогональная(ортонормированная) система,линейно независима
+\end{theorem}
+\begin{proof}
+	Так как в определителе Грама, все нули, кроме главной диагонали.
+\end{proof}
+\begin{corollary}
+	В n мерном евклидовом пространстве, ортогональная система не может содержать более n элементов.
+\end{corollary}
+\begin{corollary}
+	Если в ортогональной системе n -- элементов. Она базис (ортогональный/ортонормированный базис).
+\end{corollary}
+Будем называть ортонормированный базис естественным.
+\begin{definition}[Символ Кронекера]
+	$e_1,\dots,e_{n}$ -- ортонормированный базис
+	\[
+		(e_{i},e_{j}) = \delta_{ij} =
+		\begin{cases}
+			1, i = j \\
+			0, i \neq j
+		\end{cases}
+		.\]
+\end{definition}
+\begin{theorem}
+	Всякую линейно независимую систему линейного пространства можно перевести в ортогональную линейными преобразованиями элементов
+	\[
+		x_1, \dots, x_{k} \in E
+		.\]
+\end{theorem}
+\begin{proof}
+	Индукция по количество элементов в изначальной системе. Система из 1 элемента все ясно.\\
+	Предположим, что мы умеем взяв $k - 1$ элемент превратить в  $k - 1$ ортогональный элемент. Возьмем систему из  $k$ линейно независимых элементов. Взяли  $k -1$ по предположению превратили в ортогональную. 
+     \[
+    y_{k} = x_{k} + \alpha_1 y_1 + \dots + \alpha_{k-1} y_{k - 1}
     .\] 
     \[
-    \alpha (u_1,u_1) + \dots \alpha_{k} (u_1,u_{k}) = 0
+        (y_{k},y_{i}) = 0 , i = 1,\dots,k-1
     .\] 
-    Дальше так же умножили скалярно на остальные u. Получили однородную систему с ненулевым решением. Ее определитель ноль.
+    \[
+        0 = (y_{k},y_1) = (x_{k},y_1) + \alpha_1(y_1,y_1)
+    .\] 
+    \[
+    \alpha_{1} = - \frac{(x_{k},y_{i})}{(y_1,y_1)}
+    .\] 
+    \[
+    \alpha_{i} = -\frac{(x_{k},y_{i})}{(y_{i},y_{i})}
+    .\] 
+    \[
+    y_1 =x_1
+    .\] 
+    \[
+    y_2 = x_2 - \frac{(x_2,y_1)}{(y_1,y_1)}y_1
+    .\] 
+    \[
+    y_{k} = x_{k} - \sum_{i = 1}^{k - 1} \frac{(x_{k},y_{i})}{(y_{i},y_{i})} y_{i}
+    .\] 
 \end{proof}
 \end{document}
