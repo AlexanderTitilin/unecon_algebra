@@ -819,7 +819,7 @@ E' \subset E
     \[
     x \perp L_1
     .\] 
-    Необходимо и достаточно, чтобы x был ортогонален всем элементам некоторого базиса L_1.
+    Необходимо и достаточно, чтобы x был ортогонален всем элементам некоторого базиса $L_1$.
 \end{theorem}
 \begin{proof}
     Необходимость понятно x ортогонален всем. Достаточность $y = \sum \alpha u$ 
@@ -875,4 +875,97 @@ y = \sum \alpha u' + \sum \beta w'
 \begin{theorem}
     Любые два евклидовых пространства одной размерности изоиорфны
 \end{theorem}
+\section{Проекция перпендикуляр точка. Длины, углы, расстояния.}
+\[
+L \subset E
+.\] 
+\[
+L_1 \oplus L_1^{\perp} = E
+.\] 
+\[
+\forall  x \in ~E \exists !~t \in L_1,z \in L^{\perp}~x = y + z
+.\] 
+y -- проекция на $L_1$, z -- перпендикуляр.
+\subsection{Алгоритм}
+\[
+L_1:u_1,\dots,u_{k}
+.\] 
+\[
+y = \sum \alpha u
+.\] 
+\[
+    (x,u_1) =(y + z,u_1) = (y,u_1) = \alpha (u_1,u_1) + \dots + \alpha_{k} (u_{k},u_1)
+.\] 
+\[
+    (x ,u_{i}) =  \alpha_1 (u_1,u_{i}) + \dots \alpha_{i}(u_{i},u_{k})
+.\] 
+Определитель этой системы не нуль, есть одно решение.
+\begin{theorem}
+    \[
+    y = - \frac{1}{\Gamma} 
+    \begin{pmatrix} 
+        \gamma & u_1\\
+        \dots & \dots \\
+        (x,u_1) & \dots & (x,u_{k}) \\
+    \end{pmatrix} 
+    .\] 
+\end{theorem}
+\begin{definition}
+    Линейное пространство $L$ называется нормированным, если
+    \[
+    \forall  x \in L \exists! ~  ||x|| \in P
+    .\]
+    Называется нормой если выполняются следущие свойства
+    \begin{enumerate}
+        \item $||x|| \ge  0~ ||x|| = 0 \iff x = 0 \forall  x \in L$
+        \item $||\lambda x|| = |\lambda| ||x||$
+        \item $||x + y|| \le ||x|| + || y||$
+    \end{enumerate}
+\end{definition}
+\begin{enumerate}
+    \item $||x||_{2} = \sqrt{(x,x)} $ -- евклидова норма(норма 2)
+    \item $||x||_{1}$ $=$ $\sum |\alpha_{i}|$ 
+    \item $||x||_{\infty} = \max{\alpha_{i}}$
+\end{enumerate}
+\begin{definition}[Расстояние между двумя элементами]
+    \[
+    x,y \in E
+    .\] 
+    $\rho(x,y) := || x - y ||$
+\end{definition}
+\begin{enumerate}
+    \item $\rho(x,y) \ge  0 ~ \rho(x,y) = 0 \iff x = y$
+    \item $\rho(x,y) = \rho(y,x)$
+    \item $\rho(x,y)  \le \rho(x,z) + \rho(y,z) $
+\end{enumerate}
+\begin{definition}[Углы]
+    \[
+    x,y \in E
+    .\] 
+    \[
+        (\widehat{x,y}) \in [0, \pi]
+    .\] 
+    \[
+        \cos{\widehat{( x,y )}} = \frac{(x,y)}{||x|| * ||y||}
+    .\] 
+    \[
+    |(x,y)| \le  \sqrt{(x,x)}  \sqrt{(y,y)} 
+    .\] 
+\end{definition}
+\begin{theorem}[Теорема косинусов]
+    \[
+        ||x - y|| ^{2} = (x-y,x-y) = ||x||^{2} + ||y||^{2} - 2||x|| *||y|| \cos{\widehat{( x,y )}}
+    .\] 
+\end{theorem}
+\[
+  (||x|| - ||y||)^{2} \le  ||x - y|| ^{2} \le  (||x|| + ||y||)^{2}
+.\] 
+\[
+||x || - || y|| \le  ||x - y|| \le  ||x|| + ||y||
+.\] 
+\begin{definition}[Расстояние до подпространства]
+    \[
+        \rho(x,L_1) := \inf_{u \in L_1}{\rho(x,u)}
+    .\] 
+\end{definition}
 \end{document}
