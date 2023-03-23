@@ -968,4 +968,43 @@ y = \sum \alpha u
         \rho(x,L_1) := \inf_{u \in L_1}{\rho(x,u)}
     .\] 
 \end{definition}
+\begin{definition}
+    \[
+        \rho( L_1,L_2 ) = \inf_{u \neq 0 \in L_1 , v \neq 0 \in L_2}~ \rho(u,v)
+    .\] 
+\end{definition}
+\[
+x \in E, L_1 \subset E
+.\] 
+\[
+u \in L
+.\] 
+\[
+    \rho(x,u) = \rho(y + z,u)= ||x - u||^{2} = ||y - u + z||^{2} = ||y - u||^{2} + ||z||^{2}
+.\]
+Минимум этой фигни, когда $y = u$, вот так ищются расстояния между подпространствами.
+ \[
+\rho(x,L_1) = ||z||
+.\] 
+\begin{definition}
+    \[
+        (\widehat{x.L_1}) = \inf_{u \in L_1} (\widehat{x,u})
+    .\] 
+\end{definition}
+\[
+    \cos{\widehat{x,y}} = \frac{(x,u)}{||x|| ||u||} = \frac{||y||}{||x||} \cos{\widehat{y,u}}
+.\] 
+Эта фигня достигает максимума при $u = y$
+\[
+    (\widehat{x,L_1}) = (\widehat{x,y})
+.\] 
+\[
+a \perp L_1
+.\] 
+\[
+    (x.a) = (z,a)
+.\] 
+\[
+\frac{|(x,a)|}{||a||}
+.\] 
 \end{document}
