@@ -1442,4 +1442,63 @@ A_{e} x_{e} = \lambda x_{e} = \lambda E x_{e}
 
 Дальеш ищем собственные вектора -- решения уравнения не равные 0 $(\lambda E - A_{e})e = 0$ 
 для конкретного лямбда.
+\subsection{Еще собственные числа}
+Геометрическая кратность -- размерность собственного подпространства\\
+Алгебраическая кратность -- кратность собтвенного числа как кратность характеристического полинома.
+\begin{definition}[спектр]
+    Множество собсвенных чисел.
+\end{definition}
+\[
+    \ker{( \lambda^{*} E - A_{e} )}
+.\] 
+l -- геометрическая кратность $\lambda^*$,k -- алгебраическая кратность  $\lambda^{*}$
+\[
+    u_1,\dots,u_{l} -- \text{Базис собственного подпространства}
+.\] 
+дополнили до базиса всего пространства. Этим базисом строим базис оператора
+.
+Первые l столбоцов имеют одну лямбду со звездой и нули. Характеристический полином гарантированно имеет $(\lambda - \lambda^{*})^{l}$
+\section{Сопряженный оператор}
+\[
+    \mathcal{A} \in L(X,Y)
+.\] 
+\begin{definition}[Сопряженный оператор]
+    $\mathcal{A}^{*}$ сопряженный к $\mathcal{A}$ если
+     \[
+         (\mathcal{A}x,y) = (x,\mathcal{A}^{*}y)
+    .\] 
+    \[
+    \forall  x \in X ,y\in Y
+    .\] 
+\end{definition}
+\begin{theorem}
+    \[
+        \forall  \mathcal{A} ~ \exists ! \mathcal{A}^{*}
+    .\] 
+\end{theorem}
+\begin{proof}
+    \[
+    X: e_1,\dots,e_{n}
+    .\] 
+    Ортонормированный базис.
+    \[
+        x = \sum_{i = 1}^{n} (x,e_{i}) e_{i}
+    .\] 
+    \[
+        A^{*}y = \sum_{i = 1}^{n} (\mathcal{A}^{*} y ,e_{i}) e_{i}=
+        \sum_{i = 1}^{n} \overline{(e_{i},A^{*}y) e_{i}} = \sum_{\overline{(\mathcal{A} e_{i})} e_{i}} = \sum_{i = 1}^{n} (y,\mathcal{A} e_{i})e_{i}
+    .\] 
+    \[
+    A^{*}y = \sum_{i = 1}^{n} (y,\mathcal{A} e_{i})e_{i}
+    .\] 
+\end{proof}
+\subsection{Свойства}
+\begin{enumerate}
+    \item $(\mathcal{A}^{*})^{*}$
+    \item $ (\mathcal{A} + \mathcal{B})^{*} = A^{*} + B^{*}$ 
+    \item $(\alpha \mathcal{A})^{*} = \overline{\alpha} \mathcal{A}^{*}$ 
+    \item $(\mathcal{A} \mathcal{B})^{*} = \mathcal{B}^{*} \mathcal{A}^{*}$ 
+    \item $(\mathcal{A}^{-1}) = (\mathcal{A}^{*})^{-1}$
+\end{enumerate}
 \end{document}
+
