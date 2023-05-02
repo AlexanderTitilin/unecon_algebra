@@ -1562,6 +1562,55 @@ A^{*}x = \overline{\lambda} x
 .\] 
 \begin{theorem}
     Оператор в унитарном пространстве нормальный $\iff$
-    Оператор имеет базисную систему ортонормированных векторов. 
+    Оператор имеет базисную систему ортонормированных векторов из собственных векторов. 
 \end{theorem}
+\begin{definition}
+    Оператор из X  в X. Называется унитарным, если
+    \[
+        \mathcal{U} \mathcal{U}^{*} = \mathcal{U}^{*} \mathcal{U} = \mathcal{E}
+    .\] 
+\end{definition}
+\begin{theorem}
+    Нормальный оператор унитарный $\iff$ все его собственные числа по модулю равны 1.
+\end{theorem}
+\begin{theorem}
+    Есть возможность из собственных векторов построить ортонормированный базис.
+    Возьмем нормированный собственный вектор $(e,e) = 1 = (e,\mathcal{U}^{*} \mathcal{U} e) = (\mathcal{U} e,\mathcal{U} e) \le  |\lambda^{2}|$
+
+    Теперь в другую сторону. Взяли базис из собственных ортонормированных векторов
+    \[
+        \mathcal{U} e_{i} = \lambda_{i}e_{i}
+    .\] 
+    \[
+    x = \sum \alpha e
+    .\] 
+    \[
+        \mathcal{U} x = \sum \alpha \lambda e
+    .\] 
+    \[
+        \mathcal{U}^{*} \mathcal{U} x = \sum \alpha \lambda \overline{\lambda} e =
+        \sum \alpha e = x
+    .\] 
+\end{theorem}
+\begin{theorem}
+    Оператор унитаный $\iff$ скалярное произведение образов равно произведение прообразов
+     \[
+         (x,y) =  (\mathcal{U} x, \mathcal{U} y) ~\forall x,y \in X
+    .\] 
+\end{theorem}
+\begin{proof}
+    \[
+        (x,y) = (x,\mathcal{U}^{*} \mathcal{U} y) = (\mathcal{U} x,\mathcal{U} y)
+    .\] 
+    В другую сторону
+    \[
+        (\mathcal{U} x, \mathcal{U} y) = (x,\mathcal{U}^{*} \mathcal{U} y)
+    .\] 
+    \[
+        0 = (x, (\mathcal{E} - \mathcal{U}^{*}\mathcal{U})y)
+    .\] 
+\end{proof}
+\begin{corollary}
+    
+\end{corollary}
 \end{document}
