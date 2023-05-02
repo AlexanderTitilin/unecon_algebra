@@ -1498,7 +1498,70 @@ l -- геометрическая кратность $\lambda^*$,k -- алгеб
     \item $ (\mathcal{A} + \mathcal{B})^{*} = A^{*} + B^{*}$ 
     \item $(\alpha \mathcal{A})^{*} = \overline{\alpha} \mathcal{A}^{*}$ 
     \item $(\mathcal{A} \mathcal{B})^{*} = \mathcal{B}^{*} \mathcal{A}^{*}$ 
-    \item $(\mathcal{A}^{-1}) = (\mathcal{A}^{*})^{-1}$
+    \item $(\mathcal{A}^{-1})^{*} = (\mathcal{A}^{*})^{-1}$
 \end{enumerate}
+\[
+    \mathcal{A}^{*} y = 0
+.\] 
+\[
+    \sum_{i = 1}^{n} (y,\mathcal{A} e_{i}) e_{i} = 0
+.\] 
+\[
+    (y,\mathcal{A} e_{i}) = 0 ~ \forall i
+.\] 
+\[
+    \mathcal{A}e_1 \dots \mathcal{A}e_{n} ~\text{БАЗИС}
+.\] 
+\[
+    \mathcal{A} u = x, \mathcal{A}^{*} v = y
+.\] 
+\[
+    (x,(\mathcal{A}^{-1})^{*}y) = (\mathcal{A}^{-1}x,y) = (u,\mathcal{A}^{*}v) =
+    (\mathcal{A} u ,v) = (x,(\mathcal{A}^{*})^{-1} y )
+.\] 
+\section{Матрица сопряженного оператора}
+\[
+X:e_1,\dots,e_{n}
+.\] 
+\[
+Y:g_1,\dots,g_{m}
+.\] 
+Ортонормированные базисы
+\[
+    \mathcal{A} e_{j} = \dots + a_{ij} g_{i} + \dots
+.\] 
+\[
+    a_{ij} = (\mathcal{A} e_{j},g_{i})
+.\] 
+\[
+    \mathcal{A}^{*}_{eg}
+.\] 
+\[
+    a^{*}_{ij} = (\mathcal{A}^{*} g_{j},e_{i}) = \overline{(e_{i},A^{*} g_{i})} =
+    \overline{(\mathcal{A} e_{i},g_{j})} = \overline{a_{ji}}
+.\] 
+Матрица сопряженного оператора -- сопряженная матрица оператора
+\[
+    \ker \mathcal{A}, im \mathcal{A} ^{*} \subset X
+.\] 
+\[
+\ker A^{*},im A \subset Y
+.\] 
+\section{Нормальный оператор, унитарный оператор, самосопряженный оператор.}
+\begin{definition}
+    Оператор называется нормальным, если
+    \[
+        \mathcal{A} \mathcal{A}^{*} = \mathcal{A}^{*} \mathcal{A}
+    .\] 
+\end{definition}
+\[
+    \mathcal{A}x = \lambda x
+.\] 
+\[
+A^{*}x = \overline{\lambda} x
+.\] 
+\begin{theorem}
+    Оператор в унитарном пространстве нормальный $\iff$
+    Оператор имеет базисную систему ортонормированных векторов. 
+\end{theorem}
 \end{document}
-
